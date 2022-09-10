@@ -52,6 +52,33 @@ def isPalindromePerm(str):
     
     return True if odd <= 1 else False
 
+def oneAway(string1, string2):
+    
+    len1 = len(string1)
+    len2 = len(string2)
 
+    if len2 > len1:
+        string1, string2 = string2, string1
+    if abs(len1-len2) >= 2:
+        return False
+
+    ptr1, ptr2 = 0, 0
+    counter = 0
+    while ptr1 < len1 and ptr2 < len2:
+        if counter > 1:
+            return False
+        if string1[ptr1] != string2[ptr2] and string1[ptr1+1] == string2[ptr2]:
+            ptr1 += 1
+            counter += 1
+        elif string1[ptr1] != string2[ptr2] and string1[ptr1+1] == string2[ptr2+1]:
+            ptr1 += 1
+            ptr2 += 1
+            counter += 1
+        else:
+            ptr1 += 1
+            ptr2 += 1
+    
+    
+    return True
 
 
